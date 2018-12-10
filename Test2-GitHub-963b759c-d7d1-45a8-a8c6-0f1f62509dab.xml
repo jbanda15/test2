@@ -1,0 +1,30 @@
+<joblist>
+  <job>
+    <defaultTab>summary</defaultTab>
+    <description></description>
+    <executionEnabled>true</executionEnabled>
+    <id>963b759c-d7d1-45a8-a8c6-0f1f62509dab</id>
+    <loglevel>INFO</loglevel>
+    <name>Test2-GitHub</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <notification>
+      <onfailure>
+        <email recipients='jbanda@rundeck.com' subject='SCM Fail' />
+      </onfailure>
+      <onsuccess>
+        <email recipients='jbanda@rundeck.com' subject='SCM OK' />
+      </onsuccess>
+    </notification>
+    <notifyAvgDurationThreshold />
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[echo @job.name@
+echo @job.project@
+echo OK]]></script>
+        <scriptargs />
+      </command>
+    </sequence>
+    <uuid>963b759c-d7d1-45a8-a8c6-0f1f62509dab</uuid>
+  </job>
+</joblist>
