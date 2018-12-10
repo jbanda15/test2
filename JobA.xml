@@ -1,0 +1,51 @@
+<joblist>
+  <job>
+    <defaultTab>summary</defaultTab>
+    <description></description>
+    <executionEnabled>true</executionEnabled>
+    <id>86630558-2392-4b2c-b06e-6ef7edeafe63</id>
+    <loglevel>INFO</loglevel>
+    <name>JobA</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <description>Step1</description>
+        <exec>echo "Step 1 Job A"</exec>
+      </command>
+      <command>
+        <description>Step2</description>
+        <exec>hostname</exec>
+      </command>
+      <command>
+        <description>Capturing a Variable JobA</description>
+        <exec>echo "RUNDECK:DATA:variableA=SampleOutput"</exec>
+        <plugins>
+          <LogFilter type='key-value-data'>
+            <config>
+              <logData>true</logData>
+              <regex>^RUNDECK:DATA:(.+?)\s*=\s*(.+)$</regex>
+            </config>
+          </LogFilter>
+        </plugins>
+      </command>
+      <command>
+        <description>Creates a Global Variable  and assigns captured value</description>
+        <step-plugin type='export-var'>
+          <configuration>
+            <entry key='export' value='variable1' />
+            <entry key='group' value='export' />
+            <entry key='value' value='${data.variableA*}' />
+          </configuration>
+        </step-plugin>
+      </command>
+      <command>
+        <exec>echo ${export.variable1}</exec>
+      </command>
+      <command>
+        <exec>echo ${data.variableA}</exec>
+      </command>
+    </sequence>
+    <uuid>86630558-2392-4b2c-b06e-6ef7edeafe63</uuid>
+  </job>
+</joblist>

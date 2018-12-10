@@ -1,0 +1,32 @@
+<joblist>
+  <job>
+    <context>
+      <options preserveOrder='true'>
+        <option name='variableB' required='true' />
+      </options>
+    </context>
+    <defaultTab>summary</defaultTab>
+    <description></description>
+    <executionEnabled>true</executionEnabled>
+    <id>43225289-8996-46bd-989a-11cc7b92033e</id>
+    <loglevel>INFO</loglevel>
+    <name>JobB</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <description>Step 1</description>
+        <exec>echo "Step 1 in Job B"</exec>
+      </command>
+      <command>
+        <description>Step 2</description>
+        <exec>hostname</exec>
+      </command>
+      <command>
+        <description>Print Variable  ( output from Job A )</description>
+        <exec>echo "The Variable received from Job A: ${option.variableB}"</exec>
+      </command>
+    </sequence>
+    <uuid>43225289-8996-46bd-989a-11cc7b92033e</uuid>
+  </job>
+</joblist>
