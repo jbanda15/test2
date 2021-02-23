@@ -1,0 +1,33 @@
+<joblist>
+  <job>
+    <context>
+      <options preserveOrder='true'>
+        <option name='ip_list' />
+      </options>
+    </context>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <executionEnabled>true</executionEnabled>
+    <group>group2</group>
+    <id>57fdc8e1-1788-461c-9b2b-eee42599a390</id>
+    <loglevel>INFO</loglevel>
+    <name>Job2</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <plugins />
+    <scheduleEnabled>true</scheduleEnabled>
+    <schedules />
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <jobref group='group1' name='Job1' nodeStep='true'>
+          <arg line='-ip_list ${export.ip_list}' />
+          <importOptions>true</importOptions>
+          <uuid>28606037-8829-4bb2-bbd4-7f707193c0cb</uuid>
+        </jobref>
+      </command>
+      <command>
+        <exec>echo ${option.ip_list}</exec>
+      </command>
+    </sequence>
+    <uuid>57fdc8e1-1788-461c-9b2b-eee42599a390</uuid>
+  </job>
+</joblist>
